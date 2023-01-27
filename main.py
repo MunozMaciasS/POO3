@@ -1,4 +1,4 @@
-#Crée par Chamuel Munoz
+#Crée par Samuel Munoz
 #Exercice POO2
 #date: 16-01-2023
 
@@ -52,8 +52,15 @@ class kobold(NPC):
 
 class hero(NPC):
     def attaque(self, npc):
-        dommage_f = lancer_de()
-        npc.vie = npc.vie - dommage_f
+        self.dommage_v = randint(1,20)
+        if self.dommage_v == 20:
+            print('attaque critique!')
+            npc.vie = npc.vie - randint(1,8)
+        elif self.dommage_v == 1:
+            print('attaque ratée...')
+        elif self.dommage_v >= self.armure: #on verifie si l'attaque peut etre effectue ou non
+            npc.vie = npc.vie - lancer_de()
+
 
     def dommage_subis(self, dommage_s):
         self.vie = self.vie - dommage_s
